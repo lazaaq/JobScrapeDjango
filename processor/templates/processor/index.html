@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Filter Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #333333;
+            font-size: 20px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #444444;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        .checkbox-label {
+            font-weight: normal;
+            color: #333333;
+        }
+        .submit-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Job Search Filter</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="job_role">Job Role</label>
+            <input type="text" id="job_role" name="job_role" required>
+
+            <label for="days">Berapa Hari Terakhir?</label>
+            <select id="days" name="days" required>
+                <option value="7">7 hari</option>
+                <option value="14">14 hari</option>
+                <option value="30">30 hari</option>
+            </select>
+
+            <label>
+                <input type="checkbox" name="is_indonesia">
+                <span class="checkbox-label">Is Indonesia?</span>
+            </label>
+
+            <button type="submit" class="submit-btn">Process</button>
+        </form>
+    </div>
+</body>
+</html>
