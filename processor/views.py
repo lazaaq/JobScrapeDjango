@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import io
-from processor.jobspy import scrape_jobs
+from jobspy import scrape_jobs
 import csv
 import os
 import pandas as pd
