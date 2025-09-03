@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-03@-9xijy)40zii+ly=v%agtj^app!$1w8q##d743h6_1lq=bs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "jobscrape.lazaaq.site",
+]
 
 
 # Application definition
@@ -122,3 +124,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://jobscrape.lazaaq.site",
+]
