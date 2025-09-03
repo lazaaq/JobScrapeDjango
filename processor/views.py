@@ -27,6 +27,7 @@ def index(request):
                 search_term=role,
                 google_search_term=role,
                 hours_old=hours_old,
+                country_indeed='indonesia',
             )
             jobs["search_term"] = role  # add a column to identify role
             all_jobs.append(jobs)
