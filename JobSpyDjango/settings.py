@@ -28,8 +28,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "jobscrape.lazaaq.site",
+    "localhost",
+    "127.0.0.1",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://jobscrape.lazaaq.site",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
 
 # Application definition
 
@@ -128,11 +135,6 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://jobscrape.lazaaq.site",
-]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
