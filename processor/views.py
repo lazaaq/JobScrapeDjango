@@ -14,13 +14,9 @@ def index(request):
         job_roles_raw = request.POST.get("job_role", "").strip()
         job_roles = [role.strip() for role in job_roles_raw.split(",") if role.strip()]
         days = int(request.POST.get("days"))
-        is_indonesia = request.POST.get("is_indonesia") == "on"
 
         # Calculate hours_old from days
         hours_old = days * 24
-
-        # Choose country
-        country = "indonesia" if is_indonesia else ""
 
         # Scrape jobs
         all_jobs = []
@@ -31,7 +27,6 @@ def index(request):
                 search_term=role,
                 google_search_term=role,
                 hours_old=hours_old,
-                country_indeed=country,
             )
             jobs["search_term"] = role  # add a column to identify role
             all_jobs.append(jobs)

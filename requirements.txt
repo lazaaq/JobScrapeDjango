@@ -3,3 +3,4 @@ pandas>=2.0
 jobspy>=0.1.8
 gunicorn>=21.2.0
 beautifulsoup4
+lxml
