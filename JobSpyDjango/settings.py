@@ -20,23 +20,29 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+def _csv_env(name, default=""):
+    value = os.getenv(name, default)
+    return [item.strip() for item in value.split(",") if item.strip()]
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-03@-9xijy)40zii+ly=v%agtj^app!$1w8q##d743h6_1lq=bs'
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-03@-9xijy)40zii+ly=v%agtj^app!$1w8q##d743h6_1lq=bs",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True").lower() in {"1", "true", "yes", "on"}
 
-ALLOWED_HOSTS = [
-    "jobscrape.lazaaq.site",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = _csv_env(
+    "ALLOWED_HOSTS",
+    "jobscrape.lazaaq.site,localhost,127.0.0.1",
+)
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://jobscrape.lazaaq.site",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-]
+CSRF_TRUSTED_ORIGINS = _csv_env(
+    "CSRF_TRUSTED_ORIGINS",
+    "https://jobscrape.lazaaq.site,http://localhost:8000,http://127.0.0.1:8000",
+)
 
 # Application definition
 
@@ -126,9 +132,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # Default primary key field type
