@@ -1,6 +1,6 @@
-Django>=5.0,<5.1
-pandas>=2.0
-gunicorn>=21.2.0
-beautifulsoup4
-lxml
-python-jobspy
+Django>=5.0,<5.3
+pandas>=2.0,<3.0
+python-jobspy==1.1.80
+beautifulsoup4>=4.13,<5
+lxml>=4.9,<6
+gunicorn>=21.2,<24
